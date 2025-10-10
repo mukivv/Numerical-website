@@ -1,9 +1,8 @@
 import React from 'react'
 import Plot from 'react-plotly.js'
 import '../index.css'
-import BasePage from './BasePage';
 
-class BasePage2 extends BasePage {
+class BasePage2 extends React.Component {
   constructor(props) {
     super(props);
 
@@ -22,13 +21,13 @@ class BasePage2 extends BasePage {
 
   setxInitial = (xInitial) => this.setState({ xInitial: xInitial });
 
-  setxR = (x) => this.setState({ x: x });
+  setx = (x) => this.setState({ x: x });
 
   calculate = () => {};
 
   createGraph = () => {
-    const tableX = this.state.table.map((t) => t.x);
-    const tableY = this.state.table.map((t) => t.Fx);
+    const tableX = this.state.table.map((t) => t.Iteration);
+    const tableY = this.state.table.map((t) => t.Error);
 
     return (
       <Plot
@@ -71,6 +70,77 @@ class BasePage2 extends BasePage {
     );
   }
 
+  renderHead() {
+    return (
+      <>
+        <nav>
+          <div>
+            <h2 className='logo'> Numer ۶ৎ </h2>
+          </div>
+
+          <div className="dropdown">
+            <div className="drop-group">
+              <button className="drop-button"> Root of Equation </button>
+              <div className="drop-select">
+                <a href="/graphical"> Graphical  </a>
+                <a href="/bisection"> Bisection </a>
+                <a href="/false-position"> False Position </a>
+                <a href="/one-point"> One Point </a>
+                <a href="/newton-raphson"> Newton Raphson </a>
+                <a href="/secant"> Secant </a>
+                <a href="/taylor-series"> Taylor Series </a>
+              </div>
+            </div>
+            <div className="drop-group">
+              <button className="drop-button"> Linear Algebra </button>
+              <div className="drop-select">
+                <a href="/cramer-rule"> Cramer's rule </a>
+                <a href="/gauss-elimination"> Gauss Elimination </a>
+                <a href="/gauss-jordan-elimination"> Gauss-Jordan </a>
+                <a href="/matrix-inversion"> Matrix Inversion </a>
+                <a href="/lu-decomposition"> LU Decomposition </a>
+                <a href="/cholesky"> Cholesky </a>
+                <a href="/jacobi"> Jacobi Iteration </a>
+                <a href="/gauss-seidel"> Gauss-Seidel </a>
+                <a href="/conjugate-gradient"> Conjugate Gradient </a>
+              </div>
+            </div>
+            <div className="drop-group">
+              <button className="drop-button"> Interpolation </button>
+              <div className="drop-select">
+                <a href="/newton-divided"> Newton Divided </a>
+                <a href="/lagrange"> Lagrange </a>
+                <a href="/spline"> Spline </a>
+              </div>
+            </div>
+            <div className="drop-group">
+              <button className="drop-button"> Extrapolation </button>
+              <div className="drop-select">
+                <a href="/simple-regression"> Simple Regression </a>
+                <a href="/multiple-regression"> Multiple Regression </a>
+              </div>
+            </div>
+            <div className="drop-group">
+              <button className="drop-button"> Integration </button>
+              <div className="drop-select">
+                <a href="/trapezoidal"> Trapezoidal </a>
+                <a href="/composite-trapezoidal"> Composite Trapezoidal </a>
+                <a href="/simpson"> Simpson </a>
+                <a href="/composite-simpson"> Composite Simpson </a>
+              </div>
+            </div>
+            <div className="drop-group">
+              <button className="drop-button"> Differentiation </button>
+              <div className="drop-select">
+                <a href="/differentiation"> Differentiation </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </>
+    );
+  }
+
   createTable = () => {
     return (
       <table>
@@ -78,7 +148,6 @@ class BasePage2 extends BasePage {
           <tr>
             <th>Iteration</th>
             <th>x</th>
-            <th>f(x)</th>
             <th>% Error</th>
           </tr>
         </thead>
@@ -89,7 +158,6 @@ class BasePage2 extends BasePage {
               <tr key={index}>
                 <td>{t.Iteration}</td>
                 <td>{t.x.toFixed(6)}</td>
-                <td>{t.Fx.toFixed(6)}</td>
                 <td>{t.Error}</td>
               </tr>
             );
@@ -103,32 +171,7 @@ class BasePage2 extends BasePage {
     return "... Method";
   };
 
-  getExample = async () => {
-  try {
-    const methodName = this.getMethod();
-    
-    const response = await fetch(`http://localhost:5000/api/example/${methodName}`);
-    
-    if (!response.ok) {
-      throw new Error('No examples found');
-    }
-    
-    const data = await response.json();
-    
-    this.setState({
-      xL: data.xL,
-      xR: data.xR,
-      error: data.error,
-      fx: data.fx
-    });
-    
-  } catch (error) {
-    console.error('Error fetching example:', error);
-    alert('Failed to load example');
-  }
-};
-
-getMethod = () => { };
+  getMethod = () => { };
 
   renderForm() {
     return (
@@ -141,11 +184,11 @@ getMethod = () => { };
               type="number"
               placeholder="0.00"
               value={this.state.xL}
-              onChange={(xl) => this.setxL(parseFloat(xl.target.value))}
+              onChange={(xInitial) => this.setxInitial(parseFloat(xInitial.target.value))}
             />
           </span>
 
-          <span className="ip">
+          {/*<span className="ip">
             <label>X : </label>
             <input
               type="number"
@@ -153,7 +196,7 @@ getMethod = () => { };
               value={this.state.xR}
               onChange={(xr) => this.setxR(parseFloat(xr.target.value))}
             />
-          </span>
+          </span>*/}
 
           <span className="ip">
             <label>Error : </label>
@@ -166,10 +209,10 @@ getMethod = () => { };
           </span>
 
           <span className="ip">
-            <label>Enter f(x) : </label>
+            <label>Enter function : </label>
             <input
               type="text"
-              placeholder="x^4-13"
+              placeholder="(x+7)/(x+1)"
               value={this.state.fx}
               onChange={(f) => this.setFx(f.target.value)}
             />
