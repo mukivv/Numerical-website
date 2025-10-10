@@ -148,6 +148,7 @@ class BasePage2 extends React.Component {
           <tr>
             <th>Iteration</th>
             <th>x</th>
+            <th>f(x)</th>
             <th>% Error</th>
           </tr>
         </thead>
@@ -158,6 +159,7 @@ class BasePage2 extends React.Component {
               <tr key={index}>
                 <td>{t.Iteration}</td>
                 <td>{t.x.toFixed(6)}</td>
+                <td>{t.Fx.toFixed(6)}</td>
                 <td>{t.Error}</td>
               </tr>
             );
@@ -183,7 +185,7 @@ class BasePage2 extends React.Component {
             <input
               type="number"
               placeholder="0.00"
-              value={this.state.xL}
+              value={this.state.xInitial}
               onChange={(xInitial) => this.setxInitial(parseFloat(xInitial.target.value))}
             />
           </span>

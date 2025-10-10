@@ -8,6 +8,32 @@ class OnePointPage extends BasePage2 {
     return " ⊹ ࣪ ˖ One-Point Iteration Method  ⋆.𐙚 ̊ "
   }
 
+  createTable = () => {
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Iteration</th>
+            <th>x</th>
+            <th>% Error</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {this.state.table.map((t, index) => {
+            return (
+              <tr key={index}>
+                <td>{t.Iteration}</td>
+                <td>{t.x.toFixed(6)}</td>
+                <td>{t.Error}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    );
+  };
+
   calculate = ()=>{
       try {
         if (!this.state.fx){
