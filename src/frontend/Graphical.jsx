@@ -9,6 +9,10 @@ class GraphicalPage extends BasePage {
     return " ⊹ ࣪ ˖ Graphical Method  ⋆.𐙚 ̊ "
   }
 
+  getMethod = () => { 
+    return "graphical"
+  };
+
   calculate = ()=>{
     try {
       if (!this.state.fx){
@@ -16,7 +20,7 @@ class GraphicalPage extends BasePage {
         return;
       }
     
-      const g = new Graphical(this.state.fx,parseFloat(this.state.xL),parseFloat(this.state.xR),parseFloat(this.state.error))
+      const g = new Graphical(this.state.fx,this.state.xL,this.state.xR,this.state.error)
       this.setState({ table: g.calculate()})
     } catch (error){
       alert(error.message)

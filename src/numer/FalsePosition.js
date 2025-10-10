@@ -31,7 +31,7 @@ export class FalsePosition extends Bisection {
           Iteration: iteration,
           x: xm,
           Fx: fxM,
-          Error: iteration == 0 ? "-" : (e * 100).toFixed(6) + "%"
+          Error: (e * 100).toFixed(6)
         })
   
         iteration++

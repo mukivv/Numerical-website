@@ -21,7 +21,7 @@ export class Graphical extends Bisection {
         Iteration: iteration,
         x: xl,
         Fx: fxL,
-        Error: iteration == 0 || xl==xOld ? "-" : (e * 100).toFixed(6) + "%",
+        Error: (e * 100).toFixed(6)
       });
 
       if (e < this.error) break;
