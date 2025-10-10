@@ -51,8 +51,8 @@ class BasePage extends React.Component {
         ]}
         layout={{
           dragmode: "pan",
-          xaxis: { title: "x", gridcolor: "#e0e0e0" },
-          yaxis: { title: "f(x)", gridcolor: "#e0e0e0" },
+          xaxis: { title: { text: "Iteration", font: { family: "Arial, sans-serif", size: 16,  weight: "bold", color: "#081970de" } }},
+          yaxis: { title: { text: "Error", font: { family: "Arial, sans-serif", size: 16, weight: "bold", color: "#081970de" } }},
           hoverlabel: {
             bgcolor: "white", 
             font: { color: "rgba(49, 40, 217, 1)", size: 14 }, // สีอักษร + ขนาด
@@ -147,7 +147,6 @@ getMethod = () => { };
                 <a href="/one-point"> One Point </a>
                 <a href="/newton-raphson"> Newton Raphson </a>
                 <a href="/secant"> Secant </a>
-                <a href="/taylor-series"> Taylor Series </a>
               </div>
             </div>
             <div className="drop-group">

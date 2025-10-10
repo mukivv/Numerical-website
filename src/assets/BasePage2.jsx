@@ -1,8 +1,7 @@
-import React from 'react'
-import Plot from 'react-plotly.js'
+import BasePage from './BasePage';
 import '../index.css'
 
-class BasePage2 extends React.Component {
+class BasePage2 extends BasePage {
   constructor(props) {
     super(props);
 
@@ -15,165 +14,9 @@ class BasePage2 extends React.Component {
     };
   }
 
-  setError = (error) => this.setState({ error: error });
-
-  setFx = (fx) => this.setState({ fx: fx });
-
   setxInitial = (xInitial) => this.setState({ xInitial: xInitial });
 
   setx = (x) => this.setState({ x: x });
-
-  calculate = () => {};
-
-  createGraph = () => {
-    const tableX = this.state.table.map((t) => t.Iteration);
-    const tableY = this.state.table.map((t) => t.Error);
-
-    return (
-      <Plot
-        data={[
-          {
-            x: tableX,
-            y: tableY,
-            type: "scatter",
-            mode: "lines+markers",
-            name: "",
-            line: {
-              color: "#4f5dff",
-              width: 2,
-            },
-            marker: {
-              color: "#6b7cffff",
-              size: 10,
-              line: { color: "white", width: 2 },
-            },
-          },
-        ]}
-        layout={{
-          dragmode: "pan",
-          xaxis: { title: "x", gridcolor: "#e0e0e0" },
-          yaxis: { title: "f(x)", gridcolor: "#e0e0e0" },
-          hoverlabel: {
-            bgcolor: "white", 
-            font: { color: "rgba(49, 40, 217, 1)", size: 14 }, // สีอักษร + ขนาด
-            bordercolor: "white", // เส้นขอบ tooltip
-          },
-        }}
-        config={{
-          responsive: true,
-          displayModeBar: true,
-          displaylogo: false,
-          scrollZoom: true,
-        }}
-        style={{ width: "100%", height: "500px" }}
-      />
-    );
-  }
-
-  renderHead() {
-    return (
-      <>
-        <nav>
-          <div>
-            <h2 className='logo'> Numer ۶ৎ </h2>
-          </div>
-
-          <div className="dropdown">
-            <div className="drop-group">
-              <button className="drop-button"> Root of Equation </button>
-              <div className="drop-select">
-                <a href="/graphical"> Graphical  </a>
-                <a href="/bisection"> Bisection </a>
-                <a href="/false-position"> False Position </a>
-                <a href="/one-point"> One Point </a>
-                <a href="/newton-raphson"> Newton Raphson </a>
-                <a href="/secant"> Secant </a>
-                <a href="/taylor-series"> Taylor Series </a>
-              </div>
-            </div>
-            <div className="drop-group">
-              <button className="drop-button"> Linear Algebra </button>
-              <div className="drop-select">
-                <a href="/cramer-rule"> Cramer's rule </a>
-                <a href="/gauss-elimination"> Gauss Elimination </a>
-                <a href="/gauss-jordan-elimination"> Gauss-Jordan </a>
-                <a href="/matrix-inversion"> Matrix Inversion </a>
-                <a href="/lu-decomposition"> LU Decomposition </a>
-                <a href="/cholesky"> Cholesky </a>
-                <a href="/jacobi"> Jacobi Iteration </a>
-                <a href="/gauss-seidel"> Gauss-Seidel </a>
-                <a href="/conjugate-gradient"> Conjugate Gradient </a>
-              </div>
-            </div>
-            <div className="drop-group">
-              <button className="drop-button"> Interpolation </button>
-              <div className="drop-select">
-                <a href="/newton-divided"> Newton Divided </a>
-                <a href="/lagrange"> Lagrange </a>
-                <a href="/spline"> Spline </a>
-              </div>
-            </div>
-            <div className="drop-group">
-              <button className="drop-button"> Extrapolation </button>
-              <div className="drop-select">
-                <a href="/simple-regression"> Simple Regression </a>
-                <a href="/multiple-regression"> Multiple Regression </a>
-              </div>
-            </div>
-            <div className="drop-group">
-              <button className="drop-button"> Integration </button>
-              <div className="drop-select">
-                <a href="/trapezoidal"> Trapezoidal </a>
-                <a href="/composite-trapezoidal"> Composite Trapezoidal </a>
-                <a href="/simpson"> Simpson </a>
-                <a href="/composite-simpson"> Composite Simpson </a>
-              </div>
-            </div>
-            <div className="drop-group">
-              <button className="drop-button"> Differentiation </button>
-              <div className="drop-select">
-                <a href="/differentiation"> Differentiation </a>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </>
-    );
-  }
-
-  createTable = () => {
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>Iteration</th>
-            <th>x</th>
-            <th>f(x)</th>
-            <th>% Error</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {this.state.table.map((t, index) => {
-            return (
-              <tr key={index}>
-                <td>{t.Iteration}</td>
-                <td>{t.x.toFixed(6)}</td>
-                <td>{t.Fx.toFixed(6)}</td>
-                <td>{t.Error}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    );
-  };
-
-  getTitle = () => {
-    return "... Method";
-  };
-
-  getMethod = () => { };
 
   renderForm() {
     return (

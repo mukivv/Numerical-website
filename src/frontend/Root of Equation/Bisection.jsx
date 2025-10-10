@@ -1,6 +1,5 @@
-import '../index.css'
-import { Bisection } from '../numer/Bisection.js'
-import BasePage from '../assets/BasePage.jsx'
+import { Bisection } from '../../numer/Root of Equation/Bisection.js'
+import BasePage from '../../assets/BasePage.jsx'
 
 
 class BisectionPage extends BasePage {

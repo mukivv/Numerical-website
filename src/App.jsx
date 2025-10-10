@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import Graphical from './frontend/Graphical.jsx';
-import Bisection from './frontend/bisection.jsx';
+import Graphical from './frontend/Root of Equation/Graphical.jsx';
+import Bisection from './frontend/Root of Equation/Bisection.jsx';
 import Home from './frontend/Home.jsx';
-import FalsePosition from './frontend/FalsePosition.jsx';
-import OnePoint from './frontend/OnePoint.jsx';
-import NewtonRaphson  from './frontend/NewtonRaphson.jsx';
-import Secant from './frontend/Secant.jsx';
+import FalsePosition from './frontend/Root of Equation/FalsePosition.jsx';
+import OnePoint from './frontend/Root of Equation/OnePoint.jsx';
+import NewtonRaphson  from './frontend/Root of Equation/NewtonRaphson.jsx';
+import Secant from './frontend/Root of Equation/Secant.jsx';
 
 
 function AppInner() {

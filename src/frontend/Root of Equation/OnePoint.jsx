@@ -1,5 +1,5 @@
-import BasePage2 from "../assets/BasePage2"
-import { OnePoint } from '../numer/OnePoint.js'
+import BasePage2 from "../../assets/BasePage2.jsx"
+import { OnePoint } from '../../numer/Root of Equation/OnePoint.js'
 
 class OnePointPage extends BasePage2 {
 

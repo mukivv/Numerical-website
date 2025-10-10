@@ -1,5 +1,5 @@
-import BasePage2 from "../assets/BasePage2"
-import { Secant } from '../numer/Secant.js'
+import BasePage2 from "../../assets/BasePage2.jsx"
+import { Secant } from '../../numer/Root of Equation/Secant.js'
 
 class SecantPage extends BasePage2 {
 

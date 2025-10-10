@@ -1,6 +1,5 @@
-import '../index.css'
-import { Graphical } from '../numer/Graphical.js'
-import BasePage from '../assets/BasePage.jsx'
+import { Graphical } from '../../numer/Root of Equation/Graphical.js'
+import BasePage from '../../assets/BasePage.jsx'
 
 
 class GraphicalPage extends BasePage {

@@ -1,6 +1,5 @@
-import '../index.css'
-import { FalsePosition } from '../numer/FalsePosition.js'
-import BasePage from '../assets/BasePage.jsx'
+import { FalsePosition } from '../../numer/Root of Equation/FalsePosition.js'
+import BasePage from '../../assets/BasePage.jsx'
 
 
 class FalsePositionPage extends BasePage {

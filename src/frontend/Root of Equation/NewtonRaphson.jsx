@@ -1,5 +1,5 @@
-import BasePage2 from "../assets/BasePage2"
-import { NewtonRaphson } from '../numer/NewtonRaphson.js'
+import BasePage2 from "../../assets/BasePage2.jsx"
+import { NewtonRaphson } from '../../numer/Root of Equation/NewtonRaphson.js'
 
 class NewtonRaphsonPage extends BasePage2 {
 
