@@ -176,7 +176,7 @@ getMethod = () => { };
           </span>
 
           <div>
-            <div className="">
+            <div>
               <button className="content-btn" type="button" onClick={this.getExample}>
                 Example
               </button>
