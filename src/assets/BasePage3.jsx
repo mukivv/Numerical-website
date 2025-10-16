@@ -1,11 +1,12 @@
 import React from 'react';
 import { matrix } from 'mathjs';
 import NavBar from './NavBar';
+import { MathJaxContext } from 'better-react-mathjax';
+import { MathJax } from 'better-react-mathjax'; 
 
 class BasePage3 extends NavBar {
   constructor(props) {
     super(props);
-
     this.state = {
       n: 3,
       error: 0.000001,
@@ -14,9 +15,10 @@ class BasePage3 extends NavBar {
         ["", "", ""],
         ["", "", ""]
       ],
-      X: ["x1", "x2", "x3"],
-      B: ["", "", ""]
+      B: ["", "", ""],
+      result: null
     };
+    this.cal = null
   }
 
   getTitle = () => {
@@ -29,8 +31,8 @@ class BasePage3 extends NavBar {
     window.location.reload();
   }
 
-   handle_n = (event) => {
-    const value = event.target.value;
+  handle_n = (event) => {
+    const value = event.target.value;
     
     // 1. ถ้าค่าว่าง ให้ตั้งค่า n เป็นค่าว่างเพื่อเคลียร์ช่อง input
     if (value === "") {
@@ -50,30 +52,28 @@ class BasePage3 extends NavBar {
     // สร้าง Matrix ใหม่ที่มีขนาด n x n และ Vector B ขนาด n x 1
     const A = Array(N).fill(null).map(() => Array(N).fill(""));
     const B = Array(N).fill("");
-    const X = Array(N).fill(null).map((_, i) => `x${i + 1}`);
 
     this.setState({
       n: N,
       A: A,
       B: B,
-      X: X
     });
   };
 
   handleMatrixChange = (row, col, value) => {
     const newA = [...this.state.A];
     newA[row][col] = value;
-    this.setState({ A: newA });
+    this.setState({ A: newA , result: null});
   };
 
   handleVectorChange = (index, value) => {
     const newB = [...this.state.B];
     newB[index] = value;
-    this.setState({ B: newB });
+    this.setState({ B: newB , result: null});
   };
 
   renderMatrix = () => {
-    const { n, A, X, B } = this.state;
+    const { n, A, B } = this.state;
 
     return (
       <div className="div-matrix">
@@ -100,28 +100,6 @@ class BasePage3 extends NavBar {
           </div>
         </div>
 
-        {/* Vector X */}
-        <div>
-          <label>X</label>
-          <div>
-            <div className='div-col-matrix' >
-              {X.map((val, i) => (
-                <input
-                  key={i}
-                  type="text"
-                  value={val}
-                  readOnly
-                  className='ip-matrix'
-                  id = 'gray-matrix'
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* เครื่องหมาย = */}
-        <label>=</label>
-
         {/* Vector B */}
         <div>
           <label>B</label>
@@ -132,7 +110,7 @@ class BasePage3 extends NavBar {
                   key={i}
                   type="text"
                   value={val}
-                  onChange={(e) => this.handleVectorChange(i, e.target.value)}
+                  onChange={(e) => this.handleVectorChange(i,e.target.value)}
                   placeholder="0"
                   className='ip-matrix'
                 />
@@ -165,7 +143,13 @@ class BasePage3 extends NavBar {
   }
 
   renderSolution = () => {
-    return null;
+    if (!this.state.result) return null;
+    const latexString = this.cal.getSolution(this.state.result);
+    return (
+      <>
+        <MathJax>{`$$ ${latexString} $$`}</MathJax>
+      </>
+    );
   }
 
   calculate = () => {};
@@ -181,7 +165,12 @@ class BasePage3 extends NavBar {
               <button className="content-btn" type="button" onClick={this.calculate}> Calculate </button>
               <button className="content-btn" type="submit" onClick={this.clear}>Clear</button>
           </div>
-          <div> {this.renderSolution()} </div>
+          <h2> Solution </h2>
+          <div className='div-mathjax'> 
+            <MathJaxContext>
+              {this.renderSolution()} 
+            </MathJaxContext>
+          </div>
         </main>
       </>
     );

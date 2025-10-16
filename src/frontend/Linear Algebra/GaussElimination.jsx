@@ -1,16 +1,16 @@
 import React from 'react';
 import BasePage3 from "../../assets/BasePage3";
-import { CramerRule } from '../../numer/Linear Algebra/CramerRule.js';
+import { GaussElimination } from '../../numer/Linear Algebra/GaussElimination.js';
 
-class CramerRulePage extends BasePage3 {
+class GaussEliminationPage extends BasePage3 {
 
     getTitle = () => {
-        return "⋆˖˚ ༘𐙚  Cramer's Rule ⋆.°༘⋆"
+        return "⋆˖˚ ༘𐙚  Gauss-Elimination ⋆.°༘⋆"
     }
 
     calculate = () => {
         try {
-            this.cal = new CramerRule(this.state.n, this.state.error);
+            this.cal = new GaussElimination(this.state.n, this.state.error);
             this.setState({ result: this.cal.calculate(this.state.A, this.state.B) });
             
         } catch (error) {
@@ -19,4 +19,4 @@ class CramerRulePage extends BasePage3 {
     }
 }
 
-export default CramerRulePage
+export default GaussEliminationPage

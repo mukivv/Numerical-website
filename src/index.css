@@ -201,6 +201,20 @@ form {
   background-color: #edeff9;
   border-color: #6d6d6d;
 }
+.div-mathjax {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1rem auto;
+  margin-bottom: 4rem;
+  background-color: #ffff;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid #535bf2;
+  max-width: 800px;
+}
 
 .graph {
   background-color: white;

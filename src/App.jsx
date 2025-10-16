@@ -1,13 +1,15 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import 'katex/dist/katex.min.css';
+
 import Graphical from './frontend/Root of Equation/Graphical.jsx';
 import Bisection from './frontend/Root of Equation/Bisection.jsx';
-import Home from './frontend/Home.jsx';
 import FalsePosition from './frontend/Root of Equation/FalsePosition.jsx';
 import OnePoint from './frontend/Root of Equation/OnePoint.jsx';
 import NewtonRaphson  from './frontend/Root of Equation/NewtonRaphson.jsx';
 import Secant from './frontend/Root of Equation/Secant.jsx';
-import CramerRule from './frontend/Linear Algebra/CramerRule.jsx';
 
+import CramerRule from './frontend/Linear Algebra/CramerRule.jsx';
+import GaussElimination from './frontend/Linear Algebra/GaussElimination.jsx';
 
 function AppInner() {
 
@@ -15,7 +17,6 @@ function AppInner() {
     <>
       <main>
         <Routes>
-            <Route path="/" element={<Home />} />
             {/* ------------ Root of Equation --------------*/}
             <Route path="/graphical" element={<Graphical />} />
             <Route path="/bisection" element={<Bisection />} />
@@ -25,6 +26,7 @@ function AppInner() {
             <Route path="/secant" element={<Secant />} />
             {/* ------------ Linear Algebra --------------*/}
             <Route path="/cramer-rule" element={<CramerRule />} />
+            <Route path="/gauss-elimination" element={<GaussElimination />} />
             {/* ถ้าเข้า path ที่ไม่เจอ -> redirect ไปหน้า HomePage */}
             <Route path="*" element={<Navigate to="/bisection" replace />} />
         </Routes>
