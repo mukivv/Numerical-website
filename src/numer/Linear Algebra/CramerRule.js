@@ -5,12 +5,10 @@ export class CramerRule {
     this.n = n
   }
 
-  //แปลง matrix เป็น LaTeX
     formatMatrixLatex(data) {
 
         const type = 'vmatrix';
         
-        // ถ้าเป็น matrix ให้ใช้ format แบบแถวและคอลัมน์
         const content = data.map(row => row.map(val => round(val, 6)).join(' & ')).join('\\\\');
         return `\\begin{${type}} ${content} \\end{${type}}`;
     }

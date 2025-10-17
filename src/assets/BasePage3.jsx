@@ -34,22 +34,17 @@ class BasePage3 extends NavBar {
   handle_n = (event) => {
     const value = event.target.value;
     
-    // 1. ถ้าค่าว่าง ให้ตั้งค่า n เป็นค่าว่างเพื่อเคลียร์ช่อง input
     if (value === "") {
         this.setState({ n: "" });
-        return; // ออกจากการทำงาน
+        return;
     }
 
     const N = parseInt(value, 10);
 
-    // 2. ตรวจสอบว่าแปลงเป็นตัวเลขได้หรือไม่ และอยู่ในช่วง 2-10 หรือไม่
-    //    เนื่องจากคุณกำหนด min='0' ใน JSX แต่ Matrix Size ควรเริ่มที่ 2
     if (isNaN(N) || value < 2 || value > 10) { 
-        // ไม่ต้องทำอะไรถ้าเป็นตัวเลขที่ไม่อยู่ในช่วงที่ยอมรับ (2-10)
         return;
     }
 
-    // สร้าง Matrix ใหม่ที่มีขนาด n x n และ Vector B ขนาด n x 1
     const A = Array(N).fill(null).map(() => Array(N).fill(""));
     const B = Array(N).fill("");
 
