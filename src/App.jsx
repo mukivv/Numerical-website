@@ -12,6 +12,7 @@ import CramerRule from './frontend/Linear Algebra/CramerRule.jsx';
 import GaussElimination from './frontend/Linear Algebra/GaussElimination.jsx';
 import GaussJordan from './frontend/Linear Algebra/GaussJordan.jsx';
 import MatrixInversion from './frontend/Linear Algebra/MatrixInversion.jsx';
+import LUDecomposition from './frontend/Linear Algebra/LUDecomposition.jsx';
 
 function AppInner() {
 
@@ -31,6 +32,7 @@ function AppInner() {
             <Route path="/gauss-elimination" element={<GaussElimination />} />
             <Route path="/gauss-jordan" element={<GaussJordan />} />
             <Route path="/matrix-inversion" element={<MatrixInversion />} />
+            <Route path="/lu-decomposition" element={<LUDecomposition />} />
             {/* ถ้าเข้า path ที่ไม่เจอ -> redirect ไปหน้า HomePage */}
             <Route path="*" element={<Navigate to="/bisection" replace />} />
         </Routes>
