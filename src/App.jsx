@@ -14,6 +14,8 @@ import GaussJordan from './frontend/Linear Algebra/GaussJordan.jsx';
 import MatrixInversion from './frontend/Linear Algebra/MatrixInversion.jsx';
 import LUDecomposition from './frontend/Linear Algebra/LUDecomposition.jsx';
 import Cholesky from './frontend/Linear Algebra/Cholesky.jsx';
+import Jacobi from './frontend/Linear Algebra/Jacobi.jsx';
+import GaussSeidel from './frontend/Linear Algebra/GaussSeidel.jsx';
 
 function AppInner() {
 
@@ -35,6 +37,8 @@ function AppInner() {
             <Route path="/matrix-inversion" element={<MatrixInversion />} />
             <Route path="/lu-decomposition" element={<LUDecomposition />} />
             <Route path="/cholesky" element={<Cholesky />} />
+            <Route path="/jacobi" element={<Jacobi />} />
+            <Route path="/gauss-seidel" element={<GaussSeidel />} />
             {/* ถ้าเข้า path ที่ไม่เจอ -> redirect ไปหน้า HomePage */}
             <Route path="*" element={<Navigate to="/bisection" replace />} />
         </Routes>

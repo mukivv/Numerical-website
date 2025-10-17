@@ -16,7 +16,9 @@ class BasePage3 extends NavBar {
         ["", "", ""]
       ],
       B: ["", "", ""],
-      result: null
+      X0: ["", "", ""],
+      result: null,
+      table : []
     };
     this.cal = null
   }
@@ -47,11 +49,13 @@ class BasePage3 extends NavBar {
 
     const A = Array(N).fill(null).map(() => Array(N).fill(""));
     const B = Array(N).fill("");
+    const X0 = Array(N).fill("");
 
     this.setState({
       n: N,
       A: A,
       B: B,
+      X0 : X0
     });
   };
 
@@ -66,6 +70,12 @@ class BasePage3 extends NavBar {
     newB[index] = value;
     this.setState({ B: newB , result: null});
   };
+
+  handleX0Change = (index, value) => {
+    const newX = [...this.state.X0];
+    newX[index] = value;
+    this.setState({ X0: newX , result: null});
+};
 
   renderMatrix = () => {
     const { n, A, B } = this.state;
