@@ -1,22 +1,14 @@
 import { matrix, det, round } from 'mathjs';
 
 export class CramerRule {
-    constructor(n,error) {
+    constructor(n) {
     this.n = n
-    this.error = error
-    this.solution = []
   }
 
   //แปลง matrix เป็น LaTeX
     formatMatrixLatex(data) {
 
-        const type = 'vmatrix'; //pmatrix {} , vmatrix ||
-        
-        /* ถ้าเป็น vector ให้ใช้ formatแบบตัวแปรเดียว
-        if (isVector) {
-            const content = data.map(val => round(val, 6)).join('\\\\');
-            return `\\begin{${type}} ${content} \\end{${type}}`;
-        }*/
+        const type = 'vmatrix';
         
         // ถ้าเป็น matrix ให้ใช้ format แบบแถวและคอลัมน์
         const content = data.map(row => row.map(val => round(val, 6)).join(' & ')).join('\\\\');

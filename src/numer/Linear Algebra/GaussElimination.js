@@ -1,10 +1,8 @@
 import { round } from 'mathjs';
 
 export class GaussElimination {
-    constructor(n,error) {
+    constructor(n) {
     this.n = n
-    this.error = error
-    this.solution = []
   }
 
   //แปลง matrix เป็น LaTeX

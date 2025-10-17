@@ -10,7 +10,7 @@ class GaussJordanPage extends BasePage3 {
 
     calculate = () => {
         try {
-            this.cal = new GaussJordan(this.state.n, this.state.error);
+            this.cal = new GaussJordan(this.state.n);
             this.setState({ result: this.cal.calculate(this.state.A, this.state.B) });
             
         } catch (error) {

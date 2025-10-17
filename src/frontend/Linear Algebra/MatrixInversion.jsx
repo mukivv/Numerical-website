@@ -1,16 +1,16 @@
 import React from 'react';
 import BasePage3 from "../../assets/BasePage3";
-import { GaussElimination } from '../../numer/Linear Algebra/GaussElimination.js';
+import { MatrixInversion } from '../../numer/Linear Algebra/MatrixInversion.js';
 
-class GaussEliminationPage extends BasePage3 {
+class MatrixInversionPage extends BasePage3 {
 
     getTitle = () => {
-        return "⋆˖˚ ༘𐙚  Gauss-Elimination ⋆.°༘⋆"
+        return "⋆˖˚ ༘𐙚  Matrix Inversion ⋆.°༘⋆"
     }
 
     calculate = () => {
         try {
-            this.cal = new GaussElimination(this.state.n);
+            this.cal = new MatrixInversion(this.state.n);
             this.setState({ result: this.cal.calculate(this.state.A, this.state.B) });
             
         } catch (error) {
@@ -19,4 +19,4 @@ class GaussEliminationPage extends BasePage3 {
     }
 }
 
-export default GaussEliminationPage
+export default MatrixInversionPage

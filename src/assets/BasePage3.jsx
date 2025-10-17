@@ -132,11 +132,6 @@ class BasePage3 extends NavBar {
             <input type='number' min='0' max='10' placeholder='0' value={this.state.n} onChange={this.handle_n} />
             <label> (2-10) </label>
           </div>
-
-          <div className='ip'>
-            <label> Error : </label>
-            <input type='number' placeholder='0' value={this.state.error} onChange={(e) => this.setError(parseFloat(e.target.value))} />
-          </div>
         </form>
       </>
     )
