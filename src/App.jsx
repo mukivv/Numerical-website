@@ -10,6 +10,7 @@ import Secant from './frontend/Root of Equation/Secant.jsx';
 
 import CramerRule from './frontend/Linear Algebra/CramerRule.jsx';
 import GaussElimination from './frontend/Linear Algebra/GaussElimination.jsx';
+import GaussJordan from './frontend/Linear Algebra/GaussJordan.jsx';
 
 function AppInner() {
 
@@ -27,6 +28,7 @@ function AppInner() {
             {/* ------------ Linear Algebra --------------*/}
             <Route path="/cramer-rule" element={<CramerRule />} />
             <Route path="/gauss-elimination" element={<GaussElimination />} />
+            <Route path="/gauss-jordan" element={<GaussJordan />} />
             {/* ถ้าเข้า path ที่ไม่เจอ -> redirect ไปหน้า HomePage */}
             <Route path="*" element={<Navigate to="/bisection" replace />} />
         </Routes>

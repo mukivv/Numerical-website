@@ -30,7 +30,7 @@ class NavBar extends React.Component {
               <div className="drop-select">
                 <a href="/cramer-rule"> Cramer's rule </a>
                 <a href="/gauss-elimination"> Gauss Elimination </a>
-                <a href="/gauss-jordan-elimination"> Gauss-Jordan </a>
+                <a href="/gauss-jordan"> Gauss-Jordan </a>
                 <a href="/matrix-inversion"> Matrix Inversion </a>
                 <a href="/lu-decomposition"> LU Decomposition </a>
                 <a href="/cholesky"> Cholesky </a>

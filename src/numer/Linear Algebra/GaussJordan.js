@@ -1,6 +1,6 @@
 import { round } from 'mathjs';
 
-export class GaussElimination {
+export class GaussJordan {
     constructor(n,error) {
     this.n = n
     this.error = error
@@ -50,24 +50,54 @@ export class GaussElimination {
           B[e] = B[e] - (B[r] / A[r][r]) * er;
         }
       }
+
+      for (let r=this.n-1;r>0;r--){
+        for (let e=r-1;e>=0;e--){
+          if (A[e][r] === 0) continue;
+
+          result.push({
+            Ai: A.map(row => [...row]),
+            Bi: [...B],
+            e: e+1,
+            r: r+1
+          });
+
+          let er = A[e][r]
+          for (let R=0;R<this.n;R++){
+            A[e][R] = A[e][R] - (A[r][R] / A[r][r]) * er;
+          }
+          B[e] = B[e] - (B[r] / A[r][r]) * er;
+        }
+      }
+
+      for (let r=0;r<this.n;r++){
+        if (A[r][r] === 1 ) continue;
+
+        result.push({
+            Ai: A.map(row => [...row]),
+            Bi: [...B],
+            r: r+1
+        });
+        
+        let rr = A[r][r];
+        for (let e=0;e<this.n;e++){
+            A[r][e] /= rr;
+        }
+        B[r] /= rr;
+        
+      }
+
+
       result.push({
         Ai: A.map(row => [...row]),
         Bi: [...B],
       });
 
-      for (let i=this.n-1 ; i>=0 ;i--){
-        x[i] = B[i];
-        for (let j=i+1;j<this.n;j++){
-          x[i] -= A[i][j] * x[j];
-        }
-        x[i] /= A[i][i];
-      }
+    console.log(result)
 
       return {
         results : result,
-        X : x,
-        A : A,
-        B : B
+        X : B,
       }
     }
 
@@ -81,14 +111,17 @@ export class GaussElimination {
           const { Ai , Bi , e , r } = res;
           if (count === results.length-1){
             return `${this.formatMatrixLatex(Ai,Bi)}`
-          } else {
+          } else if (count >= results.length-this.n-1){
+            count++;
+            return `${this.formatMatrixLatex(Ai,Bi)} 
+            R_{${r}} = \\frac{R_{${r}}}{a_{${r}${r}}} \\\\`;
+          }  
+          else {
             count++;
             return `${this.formatMatrixLatex(Ai,Bi)} 
             R_{${e}} = R_{${e}} - \\frac{R_{${r}}}{R_{${r}${r}}} \\times R_{${e}${r}} \\\\`;
           }
         }).join('\\\\[2em]');
-
-        const part2 = this.getPart2(X)
 
         const answer = `
             \\mathbf{x} = 
@@ -103,35 +136,9 @@ export class GaussElimination {
 
         return `
             \\begin{gather*}
-            \\text{Forward Elimination} \\\\[2em]
             ${part1} \\\\[2em]
-            \\text{Back Substitution} \\\\[2em]
-            ${part2} \\\\[2em]
             ${answer}
             \\end{gather*}
-        `;
-    }
-
-        getPart2(X) {
-        const equations = [];
-        
-        for (let i = this.n - 1; i >= 0; i--) {
-            let sum = `b_{${i + 1}}`;
-            for (let j = i + 1; j < this.n; j++) {
-                sum += ` - a_{${i + 1}${j + 1}}x_{${j + 1}}`;
-            }            
-            
-            const eqLatex = `
-                x_{${i + 1}} = \\frac{${sum}}{a_{${i + 1}${i + 1}}} = ${round(X[i], 6)}
-            \\\\[2em]`;
-            
-            equations.push(eqLatex);
-        }
-        
-        return `
-        \\begin{gathered}
-        ${equations.join('')}
-        \\end{gathered}
         `;
     }
   }
