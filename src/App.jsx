@@ -16,6 +16,7 @@ import LUDecomposition from './frontend/Linear Algebra/LUDecomposition.jsx';
 import Cholesky from './frontend/Linear Algebra/Cholesky.jsx';
 import Jacobi from './frontend/Linear Algebra/Jacobi.jsx';
 import GaussSeidel from './frontend/Linear Algebra/GaussSeidel.jsx';
+import Conjugate from './frontend/Linear Algebra/Conjugate.jsx';
 
 function AppInner() {
 
@@ -39,6 +40,7 @@ function AppInner() {
             <Route path="/cholesky" element={<Cholesky />} />
             <Route path="/jacobi" element={<Jacobi />} />
             <Route path="/gauss-seidel" element={<GaussSeidel />} />
+            <Route path="/conjugate-gradient" element={<Conjugate />} />
             {/* ถ้าเข้า path ที่ไม่เจอ -> redirect ไปหน้า HomePage */}
             <Route path="*" element={<Navigate to="/bisection" replace />} />
         </Routes>
